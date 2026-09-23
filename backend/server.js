@@ -14,10 +14,11 @@ const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/send
 const TEST_MODE = false;
 
 // =============================================
-// ✅ CORS - UPDATED WITH NEW RAILWAY URL
+// ✅ CORS - ALLOW YOUR FRONTEND DOMAINS
 // =============================================
 app.use(cors({
     origin: [
+        'https://databundlesexchange-h1xf.onrender.com',
         'https://databundlesexchange-yy38.onrender.com',
         'https://databundlesexchange.onrender.com',
         'https://databundlesexchange-production-6241.up.railway.app',
